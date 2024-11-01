@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { Calendar } from './components/Calendar/Calendar'
+import { Navbar } from './components/Navbar/Navbar'
+import { Grid } from './components/Grid/Grid'
+import { AppContext } from './context/AppContext'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { componens } = useContext(AppContext)
 
   return (
     <>
-      <div>Hello</div>
+      <Navbar />
+      {componens === 'grid' ? <Grid /> : <Calendar />}
     </>
   )
 }
