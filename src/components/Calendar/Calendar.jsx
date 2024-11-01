@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Scheduler from 'react-mui-scheduler'
+import { AppContext } from '../../context/AppContext'
 
 export const Calendar = () => {
+  const { rowState } = useContext(AppContext)
   const [state] = useState({
     options: {
       transitionMode: 'zoom', // or fade
@@ -16,7 +18,7 @@ export const Calendar = () => {
       open: true,
       color: 'info', // info | success | warning | error
       severity: 'info', // info | success | warning | error
-      message: "🚀 Let's start with awesome react-mui-scheduler 🔥 🔥 🔥",
+      // message: "🚀 Let's start with awesome react-mui-scheduler 🔥 🔥 🔥",
       showActionButton: true,
       showNotification: true,
       delay: 1500,
@@ -28,56 +30,26 @@ export const Calendar = () => {
     },
   })
 
-  const events = [
-    {
-      id: 'event-1',
-      label: 'Medical consultation',
-      groupLabel: 'Dr Shaun Murphy',
-      user: 'Dr Shaun Murphy',
-      color: '#f28f6a',
-      startHour: '04:00 AM',
-      endHour: '05:00 AM',
-      date: '2022-05-05',
-      createdAt: new Date(),
-      createdBy: 'Kristina Mayer',
-    },
-    {
-      id: 'event-2',
-      label: 'Medical consultation',
-      groupLabel: 'Dr Claire Brown',
-      user: 'Dr Claire Brown',
-      color: '#099ce5',
-      startHour: '09:00 AM',
-      endHour: '10:00 AM',
-      date: '2022-05-09',
-      createdAt: new Date(),
-      createdBy: 'Kristina Mayer',
-    },
-    {
-      id: 'event-3',
-      label: 'Medical consultation',
-      groupLabel: 'Dr Menlendez Hary',
-      user: 'Dr Menlendez Hary',
-      color: '#263686',
-      startHour: '13 PM',
-      endHour: '14 PM',
-      date: '2022-05-10',
-      createdAt: new Date(),
-      createdBy: 'Kristina Mayer',
-    },
-    {
-      id: 'event-4',
-      label: 'Consultation prénatale',
-      groupLabel: 'Dr Shaun Murphy',
-      user: 'Dr Shaun Murphy',
-      color: '#f28f6a',
-      startHour: '08:00 AM',
-      endHour: '09:00 AM',
-      date: '2022-05-11',
-      createdAt: new Date(),
-      createdBy: 'Kristina Mayer',
-    },
-  ]
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16)
+
+  //Táblázatból áthozott adatok
+  const arr = rowState.map((e) => ({
+    id: e.id,
+    label: e.taskType,
+    groupLabel: e.fullname,
+    user: e.fullname,
+    color: randomColor,
+    startHour: e.start,
+    endHour: e.finish,
+    date: e.date,
+    createdAt: new Date(),
+    createdBy: e.fullname,
+  }))
+
+  const events = arr
+
+  ////////////////////// Sajnos ezekre már nem maradt időm (8órás intervallum) /////////////////
+  //De egyébként nem is szügségesek az adatok megjelenitéséhez
 
   const handleCellClick = (event, row, day) => {
     // Do something...
@@ -94,6 +66,8 @@ export const Calendar = () => {
   const handleAlertCloseButtonClicked = (item) => {
     // Do something...
   }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
     <Scheduler

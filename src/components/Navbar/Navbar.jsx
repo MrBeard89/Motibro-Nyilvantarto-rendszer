@@ -7,8 +7,8 @@ export const Navbar = () => {
   return (
     <>
       <div>
-        <Button onClick={() => setComponens('grid')}>Táblázat</Button>
-        <Button onClick={() => setComponens('calendar')}>Naptár</Button>
+        <Button onClick={() => setComponens('grid')}>Munkaidő Táblázat</Button>
+        <Button onClick={() => setComponens('calendar')}>Munkaidő Naptár</Button>
       </div>
     </>
   )
