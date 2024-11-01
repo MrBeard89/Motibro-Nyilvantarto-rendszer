@@ -46,7 +46,7 @@ export const Calendar = () => {
     createdBy: e.fullname,
   }))
 
-  const events = arr
+  const events = arr || []
 
   ////////////////////// Sajnos ezekre már nem maradt időm (8órás intervallum) /////////////////
   //De egyébként nem is szügségesek az adatok megjelenitéséhez
