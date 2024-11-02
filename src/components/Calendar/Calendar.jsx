@@ -33,18 +33,33 @@ export const Calendar = () => {
   let randomColor = Math.floor(Math.random() * 16777215).toString(16)
 
   //Táblázatból áthozott adatok
-  const arr = rowState.map((e) => ({
-    id: e.id,
-    label: e.taskType,
+  const arr = rowState.map((e, i) => ({
+    id: `event-${e.id}`,
+    label: e.tasktype,
     groupLabel: e.fullname,
     user: e.fullname,
-    color: randomColor,
+    color: `#${randomColor}`,
     startHour: e.start,
     endHour: e.finish,
     date: e.date,
     createdAt: new Date(),
     createdBy: e.fullname,
   }))
+
+  // {
+  //   id: "event-1",
+  //   label: "Medical consultation",
+  //   groupLabel: "Dr Shaun Murphy",
+  //   user: "Dr Shaun Murphy",
+  //   color: "#f28f6a",
+  //   startHour: "04:00 AM",
+  //   endHour: "05:00 AM",
+  //   date: "2022-05-05",
+  //   createdAt: new Date(),
+  //   createdBy: "Kristina Mayer"
+  // }
+
+  console.log(arr)
 
   const events = arr || []
 
@@ -71,9 +86,9 @@ export const Calendar = () => {
 
   return (
     <Scheduler
-      locale='en'
+      locale='hu'
       events={events}
-      legacyStyle={false}
+      legacyStyle={true}
       options={state?.options}
       alertProps={state?.alertProps}
       toolbarProps={state?.toolbarProps}

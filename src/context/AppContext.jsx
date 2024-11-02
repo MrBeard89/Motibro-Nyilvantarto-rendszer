@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 
 export const AppContext = createContext(null)
 
@@ -70,6 +71,10 @@ export const AppContextProvider = (props) => {
     ])
     ResetAllDialogValues()
     handleClose()
+    Swal.fire({
+      title: 'Sikerült a mentés!',
+      icon: 'success',
+    })
   }
   //Sor törlése
   const handleDeleteRows = () => {
