@@ -36,7 +36,8 @@ export const Calendar = () => {
   const arr =
     rowState.length == 0
       ? []
-      : rowState.map((e, i) => ({
+      : rowState &&
+        rowState.map((e, i) => ({
           id: `event-${e.id}`,
           label: e.tasktype,
           groupLabel: e.fullname,
@@ -50,6 +51,7 @@ export const Calendar = () => {
         }))
 
   const events = arr
+  console.log(rowState)
 
   ////////////////////// Sajnos ezekre már nem maradt időm (8órás intervallum) /////////////////
   //De egyébként nem is szügségesek az adatok megjelenitéséhez
