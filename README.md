@@ -15,3 +15,5 @@ de természetesen a dátum értékeket is lehet szerkeszteni ha arra lett volna 
 - Az adatokat a Táblázatból vittem át React Contextel.
 
 - Használt Technológiák: React | React-Context | MUI | MUI-X | MUI-Grid | Vite | LocalStorage
+
+- Sajnos a github pages öszeomlik, macen minden szépen lefut.Ha van rá mód akkor localban kéne futtatni.
